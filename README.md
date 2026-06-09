@@ -1,1 +1,292 @@
-# 143-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Little Universe For You 🌸</title>
+    <style>
+        /* Base Setup: Soft Kawaii Pink Meets TV Girl Electric Accents */
+        :root {
+            --bg-color: #fff0f5;       /* Soft Lavender Blush */
+            --container-bg: rgba(255, 255, 255, 0.9);
+            --text-dark: #4a3e42;
+            --tv-magenta: #ff007f;    /* TV Girl Hot Pink */
+            --tv-cyan: #00f0ff;       /* TV Girl Electric Blue */
+            --mc-blue: #5555ff;       /* Classic MC Guy blue */
+            --mc-pink: #ff55ff;       /* Classic MC Girl pink */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(#ffe5ec 2px, transparent 2px);
+            background-size: 30px 30px;
+            color: var(--text-dark);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Webpage Wrapper */
+        .mixtape-box {
+            max-width: 520px;
+            width: 100%;
+            background: var(--container-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 30px 20px;
+            box-shadow: 0 10px 30px rgba(255, 0, 127, 0.15);
+            border: 2px solid #ffe5ec;
+            box-sizing: border-box;
+            margin-top: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            color: var(--tv-magenta);
+            font-size: 26px;
+            margin: 15px 0 5px 0;
+            font-weight: bold;
+            text-shadow: 1.5px 1.5px var(--tv-cyan);
+        }
+
+        .dedication {
+            font-style: italic;
+            color: #a3808a;
+            font-size: 13.5px;
+        }
+
+        /* -------------------------------------------------------------------
+           VISUAL ART 1: TWO TV GIRL KITTENS SITTING TOGETHER + KISSING
+        ------------------------------------------------------------------- */
+        .cat-art-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 90px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .tv-cat {
+            width: 45px;
+            height: 55px;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+            margin: 0 4px;
+        }
+
+        /* Left Cat - Magenta Silhouette */
+        .cat-magenta {
+            background-color: var(--tv-magenta);
+            animation: tiltLeft 3s ease-in-out infinite;
+        }
+
+        /* Right Cat - Cyan Silhouette leaning in to kiss */
+        .cat-cyan {
+            background-color: var(--tv-cyan);
+            transform-origin: bottom center;
+            animation: kissLean 3s ease-in-out infinite;
+        }
+
+        /* Ears for the Cats */
+        .tv-cat::before, .tv-cat::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            width: 0;
+            height: 0;
+            border-bottom: 15px solid transparent;
+        }
+        .cat-magenta::before { left: 2px; border-right: 14px solid var(--tv-magenta); transform: rotate(-15deg); }
+        .cat-magenta::after { right: 2px; border-left: 14px solid var(--tv-magenta); transform: rotate(15deg); }
+        .cat-cyan::before { left: 2px; border-right: 14px solid var(--tv-cyan); transform: rotate(-15deg); }
+        .cat-cyan::after { right: 2px; border-left: 14px solid var(--tv-cyan); transform: rotate(15deg); }
+
+        /* Tails */
+        .cat-tail {
+            position: absolute;
+            bottom: 0;
+            width: 6px;
+            height: 25px;
+            border-radius: 10px;
+        }
+        .cat-magenta .cat-tail { background: var(--tv-magenta); left: -8px; transform: rotate(-20deg); }
+        .cat-cyan .cat-tail { background: var(--tv-cyan); right: -8px; transform: rotate(20deg); }
+
+        /* Pulsing Kiss Heart */
+        .kiss-heart {
+            position: absolute;
+            top: 15px;
+            font-size: 18px;
+            animation: popHeart 1.5s ease-in-out infinite;
+        }
+
+        /* -------------------------------------------------------------------
+           PLAYLIST TRACK SECTIONS
+        ------------------------------------------------------------------- */
+        .playlist {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .song-card {
+            border-radius: 16px;
+            padding: 16px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+
+        .song-card:hover {
+            transform: scale(1.02);
+        }
+
+        /* Alternating Pastel Background Shades */
+        .color-track1 { background-color: #ffdfd3; box-shadow: 0 4px 10px rgba(255,223,211,0.5); }
+        .color-track2 { background-color: #e8eae6; box-shadow: 0 4px 10px rgba(232,234,230,0.5); }
+        .color-track3 { background-color: #d8e2dc; box-shadow: 0 4px 10px rgba(216,226,220,0.5); }
+        .color-track4 { background-color: #fceade; box-shadow: 0 4px 10px rgba(252,234,222,0.5); }
+        .color-track5 { background-color: #e2d4f0; box-shadow: 0 4px 10px rgba(226,212,240,0.5); }
+        .color-track6 { background-color: #fce1e4; box-shadow: 0 4px 10px rgba(252,225,228,0.5); }
+        .color-track7 { background-color: #ffd6e0; box-shadow: 0 4px 10px rgba(255,214,224,0.5); }
+        .color-track8 { background-color: #eaf2d7; box-shadow: 0 4px 10px rgba(234,242,215,0.5); }
+        .color-track9 { background-color: #d6eaff; box-shadow: 0 4px 10px rgba(214,234,255,0.5); }
+        .color-track10 { background-color: #fef0d9; box-shadow: 0 4px 10px rgba(254,240,217,0.5); }
+        .color-track11 { background-color: #fcd5e2; box-shadow: 0 4px 10px rgba(252,213,226,0.5); }
+        .color-track12 { background-color: #fbc6d3; box-shadow: 0 4px 10px rgba(251,198,211,0.5); }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .song-name {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .song-moment {
+            font-size: 12px;
+            color: #7d6b71;
+            margin-top: 2px;
+            display: block;
+        }
+
+        .kaomoji-badge {
+            font-size: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #5c4b51;
+        }
+
+        /* Collapsible Drawer Design */
+        .letter-drawer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .letter-drawer.open {
+            max-height: 1000px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(0, 0, 0, 0.08);
+        }
+
+        .letter-content {
+            font-size: 14px;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            color: #4a3e42;
+        }
+
+        /* -------------------------------------------------------------------
+           VISUAL ART 2: MINECRAFT CHARACTERS HUGGING 
+        ------------------------------------------------------------------- */
+        .mc-scene {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 110px;
+            margin: 25px 0 15px 0;
+            position: relative;
+        }
+
+        /* Base Block Character properties */
+        .mc-char {
+            width: 32px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Block Heads */
+        .mc-head {
+            width: 24px;
+            height: 24px;
+            background-size: cover;
+            border-radius: 2px;
+        }
+
+        /* Block Torso Bodies */
+        .mc-body {
+            width: 24px;
+            height: 36px;
+            margin-top: 2px;
+            border-radius: 1px;
+            position: relative;
+        }
+
+        /* Block Legs */
+        .mc-legs {
+            width: 20px;
+            height: 32px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .mc-char .mc-leg {
+            width: 9px;
+            height: 100%;
+            border-radius: 1px;
+        }
+
+        /* --- MAN STYLE --- */
+        .mc-guy .mc-head { background-color: #5c4033; border: 2px solid #2e1a11; } /* Steve Hair/Face mix */
+        .mc-guy .mc-body { background-color: #008080; } /* Teal Shirt */
+        .mc-guy .mc-leg { background-color: #00008b; }  /* Blue Pants */
+
+        /* --- WOMAN STYLE (Hugging from behind/side) --- */
+        .mc-girl {
+            margin-left: -12px; /* Pulls her overlapping into a close hug */
+            z-index: 2;
+            transform: rotate(-5deg);
+        }
+        .mc-girl .mc-head { background-color: #d2b48c; border: 2px solid #8b5a2b; } /* Alex style */
+        .mc-girl .mc-body { background-color: #ff69b4; } /* Pink Top */
+        .mc-girl .mc-leg { background-color: #333333; }  /* Gray Pants */
+
+        /* Custom Pixelated Hugging Arm Element */
+        .mc-hug-arm {
+            position: absolute;
+            width: 26px;
+            height: 8px;
+            background-color: #ff69b4;
+            top: 8px;
+            left: -14px; /* Reaches completely across the guy's torso */
